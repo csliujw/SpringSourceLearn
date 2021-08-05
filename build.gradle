@@ -403,21 +403,21 @@ configure(rootProject) {
 		def projectDirs = allprojects.collect { it.projectDir } + "${rootDir}/buildSrc"
 		projectDirs.forEach { dir ->
 			[ 'bin', 'build', 'out', '.settings' ]
-				.collect { rootPath.relativize(new File(dir, it).toPath()) }
-				.forEach { source.exclude "$it/**" }
+					.collect { rootPath.relativize(new File(dir, it).toPath()) }
+					.forEach { source.exclude "$it/**" }
 			[ '.classpath', '.project' ]
-				.collect { rootPath.relativize(new File(dir, it).toPath()) }
-				.forEach { source.exclude "$it" }
+					.collect { rootPath.relativize(new File(dir, it).toPath()) }
+					.forEach { source.exclude "$it" }
 		}
 	}
 
-	publishing {
-		publications {
-			mavenJava(MavenPublication) {
-				artifact docsZip
-				artifact schemaZip
-				artifact distZip
-			}
-		}
-	}
+//	publishing {
+//		publications {
+//			mavenJava(MavenPublication) {
+//				artifact docsZip
+//				artifact schemaZip
+//				artifact distZip
+//			}
+//		}
+//	}
 }
